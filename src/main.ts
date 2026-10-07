@@ -212,7 +212,7 @@ function renderCargo() {
     ).join("") || '<li class="empty">Vacío</li>';
   $("hint").textContent = tot ? `${tot} unidades cargadas` : "Camión vacío";
   const boxes: number[] = [];
-  MATS.forEach((m, i) => {
+  MATS.forEach((_, i) => {
     const n = Math.min(cargo[i] ? Math.ceil(cargo[i] / 6) : 0, 8);
     for (let k = 0; k < n; k++) boxes.push(i);
   });
