@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>MMC LOGISTICA · Operaciones</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div id="loader">
+      <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" fill="#1f4e8c" />
+        <path
+          d="M12 46h40M12 46l10-24 10 24M32 46l10-24 10 24M16 22h32"
+          stroke="#fff"
+          stroke-width="3.5"
+          fill="none"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <div class="brand-l">MMC LOGISTICA</div>
+      <div class="bar"><i></i></div>
+      <small>Cargando panel de operaciones</small>
+    </div>
+
+    <header class="top">
+      <div class="brand">
+        <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" fill="#1f4e8c" />
+          <path
+            d="M12 46h40M12 46l10-24 10 24M32 46l10-24 10 24M16 22h32"
+            stroke="#fff"
+            stroke-width="4"
+            fill="none"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <b>MMC LOGISTICA</b>
+      </div>
+      <nav>
+        <a href="#mapa">Montajes</a><a href="#carga">Logística</a
+        ><a href="#personal">Personal</a>
+      </nav>
+      <span id="fecha"></span>
+    </header>
+
+    <main>
+      <div class="kpis">
+        <div class="kpi"><span>Montajes activos</span><b id="k1">–</b></div>
+        <div class="kpi">
+          <span>Unidades en nave principal</span><b id="k2">–</b>
+        </div>
+        <div class="kpi"><span>Jornadas del mes</span><b id="k3">–</b></div>
+      </div>
+
+      <section class="panel" id="mapa" aria-label="Mapa de montajes activos">
+        <div class="ph">
+          <h2>Montajes activos</h2>
+          <div class="acts">
+            <button class="sec" id="zres">Ver todos</button
+            ><button class="sec" id="zbig">Ampliar mapa</button>
+          </div>
+        </div>
+        <div id="mapSec">
+          <div id="map"></div>
+          <aside id="drawer" aria-live="polite"></aside>
+        </div>
+      </section>
+
+      <section class="panel" id="carga">
+        <div class="ph">
+          <h2>Carga de vehículos</h2>
+          <span class="sub"
+            >Capacidad ilimitada por ahora. Pulsa el camión para abrir la
+            carga.</span
+          >
+        </div>
+        <div class="truckWrap">
+          <div class="stage">
+            <svg
+              id="truck"
+              viewBox="0 0 640 260"
+              role="button"
+              tabindex="0"
+              aria-label="Abrir carga del camión"
+            >
+              <rect x="0" y="214" width="640" height="3" fill="#8fa0b5" />
+              <rect
+                x="12"
+                y="34"
+                width="390"
+                height="150"
+                rx="3"
+                fill="#f7f9fb"
+                stroke="#12233b"
+                stroke-width="4"
+              />
+              <rect x="12" y="34" width="390" height="28" fill="#12233b" />
+              <text
+                x="207"
+                y="54"
+                text-anchor="middle"
+                font-family="Inter,sans-serif"
+                font-weight="700"
+                font-size="16"
+                letter-spacing="3"
+                fill="#fff"
+              >
+                MMC LOGISTICA
+              </text>
+              <g id="cargo"></g>
+              <path
+                d="M410 84h116q24 3 40 36l22 26q6 8 6 20v18H410Z"
+                fill="#1f4e8c"
+                stroke="#12233b"
+                stroke-width="4"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M468 98h56q12 4 22 26h-78Z"
+                fill="#cfe0f2"
+                stroke="#12233b"
+                stroke-width="3"
+                stroke-linejoin="round"
+              />
+              <rect
+                x="606"
+                y="164"
+                width="22"
+                height="10"
+                fill="#f2c14e"
+                stroke="#12233b"
+                stroke-width="2"
+              />
+              <rect x="2" y="184" width="636" height="16" fill="#12233b" />
+              <g id="wheels"></g>
+            </svg>
+            <div class="hint" id="hint">Camión vacío</div>
+          </div>
+          <div class="box" id="loadPanel">
+            <div class="row">
+              <label for="orig">Origen</label
+              ><select id="orig"></select>
+            </div>
+            <ul id="stock"></ul>
+            <h3>En el vehículo</h3>
+            <ul id="cargoList" class="lst"></ul>
+            <div class="row">
+              <label for="dest">Destino</label
+              ><select id="dest"></select>
+            </div>
+            <div class="row">
+              <button id="send">Enviar vehículo</button
+              ><button class="sec" id="clear">Vaciar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="personal">
+        <div class="ph">
+          <h2>Jornadas del mes</h2>
+          <span class="sub" id="mes"></span>
+        </div>
+        <div class="wgrid" id="workers"></div>
+        <div class="tot" id="total"></div>
+      </section>
+    </main>
+    <div id="toast" role="status"></div>
+    <script type="module" src="src/main.ts"></script>
+  </body>
+</html>
